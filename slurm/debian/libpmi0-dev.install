@@ -1,0 +1,3 @@
+usr/include/slurm/pmi.h
+usr/lib/*/libpmi.a
+usr/lib/*/libpmi.so

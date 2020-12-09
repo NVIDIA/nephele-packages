@@ -1,0 +1,3 @@
+new-package-should-close-itp-bug
+manpage-has-bad-whatis-entry
+init.d-script-not-included-in-package

@@ -1,0 +1,5 @@
+*.stamp
+*.sqsh
+*.deb
+*.tar.xz
+*.dsc

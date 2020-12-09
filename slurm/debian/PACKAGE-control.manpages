@@ -1,0 +1,10 @@
+debian/tmp/usr/share/man/man8/slurmctld.8
+debian/tmp/usr/share/man/man8/spank.8
+debian/tmp/usr/share/man/man5/ext_sensors.conf.5
+debian/tmp/usr/share/man/man5/gres.conf.5
+debian/tmp/usr/share/man/man5/acct_gather.conf.5
+debian/tmp/usr/share/man/man5/burst_buffer.conf.5
+debian/tmp/usr/share/man/man5/cgroup.conf.5
+debian/tmp/usr/share/man/man5/nonstop.conf.5
+debian/tmp/usr/share/man/man5/topology.conf.5
+debian/tmp/usr/share/man/man5/slurm.conf.5

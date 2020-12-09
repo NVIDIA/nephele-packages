@@ -1,0 +1,62 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/pkg-info.mk
+
+#export DH_VERBOSE = 1
+
+# XXX: Avoid bindnow because SLURM plugins depend on symbols defined in specific binaries (e.g. select_linear <-> slurmctld)
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-bindnow
+
+PACKAGE := #PACKAGE#
+SLURM_MAJOR := 35
+SLURM_UID := 64030
+
+# XXX: Specificy NVML stubs manually otherwise autotools won't find them
+export DEB_CPPFLAGS_MAINT_APPEND = -I/usr/local/cuda-11.0/targets/$(DEB_HOST_GNU_CPU)-$(DEB_HOST_ARCH_OS)/include
+export DEB_LDFLAGS_MAINT_APPEND = -L/usr/local/cuda-11.0/targets/$(DEB_HOST_GNU_CPU)-$(DEB_HOST_ARCH_OS)/lib/stubs
+
+%:
+	-rename.ul PACKAGE $(PACKAGE) $(CURDIR)/debian/*
+	-rename.ul MAJOR $(SLURM_MAJOR) $(CURDIR)/debian/*
+	sed -i 's/#MAJOR#/$(SLURM_MAJOR)/' $(CURDIR)/debian/control $(CURDIR)/debian/libslurm$(SLURM_MAJOR).symbols
+	sed -i 's/#UID#/$(SLURM_UID)/' $(CURDIR)/debian/$(PACKAGE)-plugins.postrm $(CURDIR)/debian/$(PACKAGE)-plugins.preinst
+	sed -i 's/#DEB_VERSION_UPSTREAM#/$(DEB_VERSION_UPSTREAM)/ ; s/#DEB_HOST_MULTIARCH#/$(DEB_HOST_MULTIARCH)/' $(CURDIR)/debian/slurm.pc $(CURDIR)/debian/libslurm-dev.install
+ifdef DO_RELEASE
+	sed -i "s/UNRELEASED/$(shell lsb_release -c -s)/" $(CURDIR)/debian/changelog
+endif
+	dh $@#DH_ADDON#
+
+override_dh_auto_configure:
+	dh_auto_configure -- --disable-dependency-tracking                   \
+						 --disable-debug                                 \
+						 --disable-x11                                   \
+						 --enable-pam                                    \
+						 --enable-really-no-cray                         \
+						 --enable-salloc-kill-cmd                        \
+						 --sysconfdir=/etc/slurm                         \
+						 --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)         \
+						 --with-hdf5=no                                  \
+						 --with-munge                                    \
+						 --with-pic                                      \
+						 --with-pmix=/usr/lib/$(DEB_HOST_MULTIARCH)/pmix \
+						 --without-rpath                                 \
+						 --without-shared-libslurm
+
+override_dh_auto_install:
+	dh_auto_install
+	$(MAKE) -C $(CURDIR)/contribs/pam_slurm_adopt install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C $(CURDIR)/contribs/pmi install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C $(CURDIR)/contribs/pmi2 install DESTDIR=$(CURDIR)/debian/tmp
+
+override_dh_installsystemd:
+	dh_installsystemd --name=slurmd
+	dh_installsystemd --name=slurmctld
+	dh_installsystemd --name=slurmdbd
+
+override_dh_shlibdeps:
+	# XXX: Avoid dependencies on specific drivers and move librrd8 to a recommends to avoid X11 dependencies
+	dh_shlibdeps -- -xlibnvidia-compute-450 -xlibibmad5 -xlibibumad3 -xlibrrd8
+
+override_dh_strip:
+	dh_strip
+	strip --verbose --strip-unneeded -R .comment -R .note $(CURDIR)/debian/*-dev/usr/lib/*/*.a

@@ -1,0 +1,29 @@
+diff -r -pu a/packages/build-deb-packages.sh b/packages/build-deb-packages.sh
+--- a/packages/build-deb-packages.sh	2020-10-05 12:28:30.000000000 -0700
++++ b/packages/build-deb-packages.sh	2020-10-12 22:56:09.950623814 -0700
+@@ -69,7 +69,8 @@ ex mv gdrcopy gdrcopy-${VERSION}
+ ex tar czvf gdrcopy_${VERSION}.orig.tar.gz gdrcopy-${VERSION}
+ 
+ ex cd ${tmpdir}/gdrcopy-${VERSION}
+-ex debuild --set-envvar=CUDA=${CUDA} --set-envvar=PKG_CONFIG_PATH=${PKG_CONFIG_PATH} -us -uc
++yes | mk-build-deps -r -i
++ex debuild --set-envvar=CUDA=${CUDA} --set-envvar=KVER=${KVER} --set-envvar=PKG_CONFIG_PATH=${PKG_CONFIG_PATH} -us -uc
+ 
+ echo
+ echo "Building dkms module ..."
+diff -r -pu a/packages/debian/rules b/packages/debian/rules
+--- a/packages/debian/rules	2020-10-05 12:28:30.000000000 -0700
++++ b/packages/debian/rules	2020-10-12 23:48:38.287403584 -0700
+@@ -21,10 +21,10 @@
+ # dh_make generated override targets
+ # This is example for Cmake (See https://bugs.debian.org/641051 )
+ override_dh_auto_build:
+-	dh_auto_build -- CUDA=$(CUDA)
++	$(MAKE) config driver lib CUDA=$(CUDA)
+ 
+ override_dh_shlibdeps:
+ 	dh_shlibdeps -Xcopybw -Xcopylat -Xsanity
+ 
+ override_dh_auto_install:
+-	dh_auto_install -- prefix=/usr libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
++	$(MAKE) lib_install DESTDIR=debian/gdrcopy prefix=/usr libdir=/usr/lib/$(DEB_HOST_MULTIARCH)

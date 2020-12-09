@@ -1,0 +1,17 @@
+/var/log/slurm/slurmd.log {
+  compress
+  missingok
+  nocopytruncate
+  nodelaycompress
+  nomail
+  notifempty
+  noolddir
+  rotate 5
+  sharedscripts
+  size=5M
+  create 640 slurm root
+  postrotate
+      pkill -x --signal SIGUSR2 slurmd
+      exit 0
+  endscript
+}

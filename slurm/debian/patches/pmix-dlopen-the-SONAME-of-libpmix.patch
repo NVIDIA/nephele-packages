@@ -1,0 +1,26 @@
+From abdaaa1997672673daffd002a70ea5178fc9c1d9 Mon Sep 17 00:00:00 2001
+From: Felix Abecassis <fabecassis@nvidia.com>
+Date: Thu, 12 Mar 2020 13:55:18 -0700
+Subject: [PATCH] pmix: dlopen the SONAME of libpmix
+
+---
+ src/plugins/mpi/pmix/mpi_pmix.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/mpi/pmix/mpi_pmix.c b/src/plugins/mpi/pmix/mpi_pmix.c
+index c4bdeafc6b..5222a54e5c 100644
+--- a/src/plugins/mpi/pmix/mpi_pmix.c
++++ b/src/plugins/mpi/pmix/mpi_pmix.c
+@@ -107,7 +107,8 @@ static void *_libpmix_open(void)
+ #elif defined PMIXP_V3_LIBPATH
+ 	xstrfmtcat(full_path, "%s/", PMIXP_V3_LIBPATH);
+ #endif
+-	xstrfmtcat(full_path, "libpmix.so");
++	/* PMIx v2 and v3 have the same SONAME: libpmix.so.2 */
++	xstrfmtcat(full_path, "libpmix.so.2");
+ 
+ 	lib_plug = dlopen(full_path, RTLD_LAZY | RTLD_GLOBAL);
+ 	xfree(full_path);
+-- 
+2.25.1
+

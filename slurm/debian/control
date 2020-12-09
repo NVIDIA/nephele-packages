@@ -1,0 +1,215 @@
+Source: #PACKAGE#
+Section: admin
+Priority: optional
+Maintainer: #USERNAME# <#EMAIL#>
+Standards-Version: #POLICY#
+Homepage: http://slurm.schedmd.com
+Build-Depends: #BUILD_DEPS#,
+               cuda-nvml-dev-11-0,
+               default-libmysqlclient-dev,
+               dh-exec,
+               libcurl4-openssl-dev,
+               libfreeipmi-dev,
+               libhwloc-dev,
+               libibmad-dev,
+               libibumad-dev,
+               libipmimonitoring-dev,
+               libjson-c-dev,
+               liblua5.3-dev,
+               liblz4-dev,
+               libmunge-dev,
+               libncurses5-dev,
+               libnuma-dev,
+               libpam0g-dev,
+               libpmix-dev,
+               libreadline-dev,
+               librrd-dev,
+               libssl-dev,
+               pkg-config,
+               python3
+
+# XXX: We need to hardcode the libpmix2 dependency since it's dlopened by plugins
+Package: #PACKAGE#-plugins
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libpmix2
+Recommends: librrd8
+Conflicts: slurm-wlm-basic-plugins
+Description: SLURM runtime plugins
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM runtime plugins.
+
+Package: #PACKAGE#-utils
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         #PACKAGE#-plugins (= ${binary:Version})
+Recommends: munge
+Conflicts: slurm-client
+Description: SLURM command line utilities
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM command line utilities.
+
+Package: #PACKAGE#-compute
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         #PACKAGE#-plugins (= ${binary:Version})
+Recommends: munge
+Conflicts: slurmd
+Description: SLURM compute node daemon
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM compute node daemon slurmd.
+
+Package: #PACKAGE#-control
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         #PACKAGE#-plugins (= ${binary:Version}),
+         #PACKAGE#-utils (= ${binary:Version})
+Recommends: munge
+Conflicts: slurmctld
+Description: SLURM central management daemon
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM central management daemon slurmctld.
+
+Package: #PACKAGE#-database
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         #PACKAGE#-plugins (= ${binary:Version})
+Recommends: munge
+Conflicts: slurmdbd
+Description: SLURM database daemon
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM database daemon slurmdbd.
+
+Package: libslurm#MAJOR#
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: SLURM runtime library
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM runtime library.
+
+Package: libslurm-dev
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libslurm#MAJOR# (= ${binary:Version})
+Conflicts: libslurm10-dev,
+           libslurm11-dev,
+           libslurm12-dev,
+           libslurm13-dev,
+           libslurm20-dev,
+           libslurm21-dev
+Replaces: libslurm10-dev,
+          libslurm11-dev,
+          libslurm12-dev,
+          libslurm13-dev,
+          libslurm20-dev,
+          libslurm21-dev
+Description: SLURM runtime development files
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM runtime static library and header files.
+
+Package: libpam-slurm-adopt
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: SLURM adopt PAM module library
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM adopt PAM module library.
+
+Package: libpmi0
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: SLURM PMI library
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM PMI library.
+
+Package: libpmi0-dev
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libpmi0 (= ${binary:Version}),
+Description: SLURM PMI development files
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM PMI static library and header files.
+
+Package: libpmi2-0
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: SLURM PMI2 library
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM PMI2 library.
+
+Package: libpmi2-0-dev
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libpmi2-0 (= ${binary:Version}),
+Description: SLURM PMI2 development files
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains the SLURM PMI2 static library and header files.

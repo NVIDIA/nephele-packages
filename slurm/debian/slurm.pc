@@ -1,0 +1,5 @@
+Name: slurm
+Description: Slurm API
+Version: #DEB_VERSION_UPSTREAM#
+Cflags: -I/usr/include
+Libs: -L/usr/lib/#DEB_HOST_MULTIARCH# -lslurm

@@ -1,0 +1,8 @@
+debian/slurm.pc usr/lib/#DEB_HOST_MULTIARCH#/pkgconfig/
+usr/include/slurm/slurm_errno.h
+usr/include/slurm/slurm.h
+usr/include/slurm/smd_ns.h
+usr/include/slurm/spank.h
+usr/include/slurm/slurmdb.h
+usr/lib/*/libslurm.a
+usr/lib/*/libslurm.so

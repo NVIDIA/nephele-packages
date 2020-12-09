@@ -1,0 +1,31 @@
+#!/bin/sh
+# postrm script for #PACKAGE#
+#
+# see: dh_installdeb(1)
+
+set -e
+
+case "$1" in
+    purge)
+        if [ $(id -u slurm 2> /dev/null) ]; then
+            uid=$(id -u slurm 2>/dev/null)
+            gid=$(id -g slurm 2>/dev/null)
+
+            if [ "${uid}" = "#UID#" ] && [ "${gid}" = "#UID#" ] ; then
+                userdel slurm || :
+            fi
+        fi
+    ;;
+
+    remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

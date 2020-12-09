@@ -1,0 +1,67 @@
+#PACKAGE# (20.02.6.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * Slurm 20.02.6.1
+
+ -- #USERNAME# <#EMAIL#>  Mon, 16 Nov 2020 10:00:00 +0800
+
+#PACKAGE# (20.02.5.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * Slurm 20.02.5.1
+
+ -- #USERNAME# <#EMAIL#>  Tue, 15 Sep 2020 07:00:00 +0500
+
+#PACKAGE# (20.02.4.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * Slurm 20.02.4.1
+  * Remove the spank_messages_with_pty patch
+
+ -- #USERNAME# <#EMAIL#>  Wed, 5 Aug 2020 16:00:00 +0700
+
+#PACKAGE# (20.02.3.1+nvidia-3) UNRELEASED; urgency=medium
+
+  * Add pkgconfig file for libslurm
+
+ -- #USERNAME# <#EMAIL#>  Fri, 10 Jul 2020 11:00:00 +0700
+
+#PACKAGE# (20.02.3.1+nvidia-2) UNRELEASED; urgency=medium
+
+  * Add node_features/helpers plugin
+
+ -- #USERNAME# <#EMAIL#>  Mon, 6 Jul 2020 14:00:00 +0700
+
+#PACKAGE# (20.02.3.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * Slurm 20.02.3.1
+
+ -- #USERNAME# <#EMAIL#>  Tue, 30 Jun 2020 13:48:00 +0700
+
+#PACKAGE# (19.05.5.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * Slurm 19.05.5.1
+
+ -- #USERNAME# <#EMAIL#>  Thu, 12 Mar 2020 15:57:22 +0000
+
+#PACKAGE# (19.05.4.1+nvidia-2) UNRELEASED; urgency=medium
+
+  * Add liblua to enable the job_submit/lua plugin
+
+ -- #USERNAME# <#EMAIL#>  Thu, 16 Jan 2020 15:18:46 -0800
+
+#PACKAGE# (19.05.4.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * Slurm 19.05.4.1
+
+ -- #USERNAME# <#EMAIL#>  Wed, 11 Dec 2019 13:09:00 -0800
+
+#PACKAGE# (19.05.1.2+nvidia-1) UNRELEASED; urgency=medium
+
+  * SLURM 19.05.1.2
+  * Patch _slurmd_job_log_init to allow Spank messages even with a pty
+
+ -- #USERNAME# <#EMAIL#>  Fri, 12 Jul 2019 20:14:30 +0000
+
+#PACKAGE# (19.05.0.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * SLURM 19.05.0.1
+
+ -- #USERNAME# <#EMAIL#>  Thu, 13 Jun 2019 21:05:49 +0000

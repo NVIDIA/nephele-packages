@@ -1,0 +1,62 @@
+#! /usr/bin/enroot batch
+#ENROOT_REMAP_ROOT=y
+#ENROOT_ROOTFS_WRITABLE=y
+#ENROOT_ROOTFS=${CONTAINER_NAME}
+
+# Copyright (c) 2020, NVIDIA CORPORATION. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+mounts() {
+    echo "$(dirname $0)/.. /mnt bind,x-create=dir"
+}
+
+environ() {
+    echo "SHELL=/bin/bash"
+    echo "DEBFULLNAME=NVIDIA CORPORATION"
+    echo "DEBEMAIL=cudatools@nvidia.com"
+    echo "LANG=C.UTF-8"
+    echo "DEB_BUILD_OPTIONS='parallel=$(nproc)'"
+
+    echo "GDRCOPY_VERSION=${GDRCOPY_VERSION?Missing environment variable}"
+    echo "NVIDIA_DRIVER_VERSION=${NVIDIA_DRIVER_VERSION?Missing environment variable}"
+    echo "KERNEL_VERSION=${KERNEL_VERSION?Missing environment variable}"
+}
+
+rc() {
+    set -eux
+
+    apt-get -y update && apt-get -y install --no-install-recommends \
+        ca-certificates \
+        curl \
+        devscripts \
+        dh-make \
+        equivs \
+        fakeroot \
+        lintian
+
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list
+    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+    apt-get -y update && apt-get -y install --no-install-recommends \
+        dkms \
+        nvidia-kernel-source-${NVIDIA_DRIVER_VERSION%%.*} \
+        linux-headers-${KERNEL_VERSION}
+
+    mkdir -p /usr/local/src/gdrcopy && cd /usr/local/src/gdrcopy
+    curl -fSsL https://github.com/NVIDIA/gdrcopy/archive/${GDRCOPY_VERSION}.tar.gz | tar --strip-components=1 -xz
+    patch -p1 < /mnt/gdrcopy/gdrcopy.patch
+
+    cd packages && CUDA=/var/empty KVER=$(ls /lib/modules) ./build-deb-packages.sh
+
+    cp *.orig.tar.* *.debian.tar.* *.dsc *.deb /mnt
+}

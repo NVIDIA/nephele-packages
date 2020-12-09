@@ -1,0 +1,63 @@
+#! /usr/bin/enroot batch
+#ENROOT_REMAP_ROOT=y
+#ENROOT_ROOTFS_WRITABLE=y
+#ENROOT_ROOTFS=${CONTAINER_NAME}
+
+# Copyright (c) 2020, NVIDIA CORPORATION. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+mounts() {
+    echo "$(dirname $0)/.. /mnt bind,x-create=dir"
+}
+
+environ() {
+    echo "SHELL=/bin/bash"
+    echo "DEBFULLNAME=NVIDIA CORPORATION"
+    echo "DEBEMAIL=cudatools@nvidia.com"
+    echo "DO_RELEASE=${DO_RELEASE-}"
+    echo "LANG=C.UTF-8"
+    echo "DEB_BUILD_OPTIONS='parallel=$(nproc)'"
+
+    echo "PYXIS_VERSION=${PYXIS_VERSION?Missing environment variable}"
+}
+
+rc() {
+    set -eux
+
+    apt-get -y update && apt-get -y install --no-install-recommends \
+        ca-certificates \
+        curl \
+        devscripts \
+        dh-make \
+        equivs \
+        fakeroot \
+        lintian
+    apt-get -y install /mnt/libslurm-dev*.deb /mnt/libslurm35*.deb
+
+    mkdir -p /usr/local/src/pyxis && cd /usr/local/src/pyxis
+
+    tarball=nvslurm-plugin-pyxis_${PYXIS_VERSION}.orig.tar.gz
+    srcdir=pyxis-${PYXIS_VERSION}
+
+    curl -fSsL -o ${tarball} https://github.com/NVIDIA/pyxis/archive/v${PYXIS_VERSION}.tar.gz
+    mkdir ${srcdir}
+    tar --strip-components=1 -C ${srcdir} -xf ${tarball}
+    cd ${srcdir}
+
+    yes | mk-build-deps -i -r
+    make deb
+
+    cd ..
+    cp *.orig.tar.* *.debian.tar.* *.dsc *.deb /mnt
+}
