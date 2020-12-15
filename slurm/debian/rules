@@ -10,6 +10,9 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-bindnow
 PACKAGE := #PACKAGE#
 SLURM_MAJOR := 35
 SLURM_UID := 64030
+ifndef NVIDIA_DRIVER_VERSION
+$(error NVIDIA_DRIVER_VERSION is not set)
+endif
 
 # XXX: Specificy NVML stubs manually otherwise autotools won't find them
 export DEB_CPPFLAGS_MAINT_APPEND = -I/usr/local/cuda-11.0/targets/$(DEB_HOST_GNU_CPU)-$(DEB_HOST_ARCH_OS)/include
@@ -55,7 +58,7 @@ override_dh_installsystemd:
 
 override_dh_shlibdeps:
 	# XXX: Avoid dependencies on specific drivers and move librrd8 to a recommends to avoid X11 dependencies
-	dh_shlibdeps -- -xlibnvidia-compute-450 -xlibibmad5 -xlibibumad3 -xlibrrd8
+	dh_shlibdeps -- -xlibnvidia-compute-$${NVIDIA_DRIVER_VERSION%%.*} -xlibibmad5 -xlibibumad3 -xlibrrd8
 
 override_dh_strip:
 	dh_strip

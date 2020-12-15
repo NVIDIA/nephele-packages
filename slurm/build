@@ -30,6 +30,7 @@ environ() {
     echo "DEB_BUILD_OPTIONS='parallel=$(nproc)'"
 
     echo "SLURM_VERSION=${SLURM_VERSION?Missing environment variable}"
+    echo "NVIDIA_DRIVER_VERSION=${NVIDIA_DRIVER_VERSION?Missing environment variable}"
 }
 
 rc() {
@@ -47,11 +48,15 @@ rc() {
         lsb-release     \
         software-properties-common
 
-    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list
-    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
-    apt-get -y update && apt-get -y install --no-install-recommends libnvidia-compute-450
+    osrel=$(. /etc/os-release; echo ${ID}${VERSION_ID/./})
 
-    mkdir /usr/local/src/slurm && cd /usr/local/src/slurm
+    # XXX: Needed for cuda-nvml-dev-11-0 in the build depends
+    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/${osrel}/x86_64 /" > /etc/apt/sources.list.d/cuda.list
+    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/${osrel}/x86_64/7fa2af80.pub
+    apt-get -y update && apt-get -y install --no-install-recommends \
+        libnvidia-compute-${NVIDIA_DRIVER_VERSION%%.*}
+
+    mkdir -p /usr/local/src/slurm && cd /usr/local/src/slurm
 
     pkgname=nvslurm
     pkgvers=${SLURM_VERSION}+nvidia
@@ -65,7 +70,7 @@ rc() {
     cp -a /mnt/slurm/debian/source /mnt/slurm/debian/patches debian
     yes | mk-build-deps -i -r
 
-    debuild -us -uc -G -i -tc
+    debuild --preserve-env -us -uc -G -i -tc
 
     cd ..
     cp *.orig.tar.* *.debian.tar.* *.dsc *.deb /mnt
