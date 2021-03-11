@@ -10,11 +10,13 @@ Build-Depends: #BUILD_DEPS#,
                dh-exec,
                libcurl4-openssl-dev,
                libfreeipmi-dev,
+               libhttp-parser-dev,
                libhwloc-dev,
                libibmad-dev,
                libibumad-dev,
                libipmimonitoring-dev,
                libjson-c-dev,
+               libjwt-dev,
                liblua5.3-dev,
                liblz4-dev,
                libmunge-dev,
@@ -25,6 +27,7 @@ Build-Depends: #BUILD_DEPS#,
                libreadline-dev,
                librrd-dev,
                libssl-dev,
+               libyaml-dev,
                pkg-config,
                python3
 
@@ -104,6 +107,19 @@ Description: SLURM database daemon
  interconnect agnostic.
  .
  This package contains the SLURM database daemon slurmdbd.
+
+Package: #PACKAGE#-restapi
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: SLURM REST API Daemon
+ SLURM stands for Simple Linux Utility for Resource Management, it
+ is an open-source cluster resource management and job scheduling system
+ that strives to be simple, scalable, portable, fault-tolerant, and
+ interconnect agnostic.
+ .
+ This package contains slurmrestd, which provides a REST interface to
+ Slurm.
 
 Package: libslurm#MAJOR#
 Architecture: any

@@ -8,7 +8,7 @@ include /usr/share/dpkg/pkg-info.mk
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-bindnow
 
 PACKAGE := #PACKAGE#
-SLURM_MAJOR := 35
+SLURM_MAJOR := 36
 SLURM_UID := 64030
 ifndef NVIDIA_DRIVER_VERSION
 $(error NVIDIA_DRIVER_VERSION is not set)
@@ -43,7 +43,7 @@ override_dh_auto_configure:
 						 --with-pic                                      \
 						 --with-pmix=/usr/lib/$(DEB_HOST_MULTIARCH)/pmix \
 						 --without-rpath                                 \
-						 --without-shared-libslurm
+						 --enable-slurmrestd
 
 override_dh_auto_install:
 	dh_auto_install
@@ -55,6 +55,13 @@ override_dh_installsystemd:
 	dh_installsystemd --name=slurmd
 	dh_installsystemd --name=slurmctld
 	dh_installsystemd --name=slurmdbd
+	dh_installsystemd --name=slurmrestd
+
+override_dh_installinit:
+	dh_installinit --name=slurmd
+	dh_installinit --name=slurmctld
+	dh_installinit --name=slurmdbd
+	dh_installinit --name=slurmrestd
 
 override_dh_shlibdeps:
 	# XXX: Avoid dependencies on specific drivers and move librrd8 to a recommends to avoid X11 dependencies

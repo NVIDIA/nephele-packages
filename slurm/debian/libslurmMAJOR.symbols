@@ -19,7 +19,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_allocation_lookup@Base 19.05.0.1
  slurm_allocation_msg_thr_create@Base 19.05.0.1
  slurm_allocation_msg_thr_destroy@Base 19.05.0.1
- slurm_api_clear_config@Base 19.05.0.1
  slurm_api_version@Base 19.05.0.1
  slurm_auth_fini@Base 19.05.0.1
  slurm_auth_index@Base 19.05.0.1
@@ -88,7 +87,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_conf_get_hostname@Base 19.05.0.1
  slurm_conf_get_nodeaddr@Base 19.05.0.1
  slurm_conf_get_nodename@Base 19.05.0.1
- slurm_conf_get_nodename_from_addr@Base 19.05.0.1
  slurm_conf_get_port@Base 19.05.0.1
  slurm_conf_get_res_spec_info@Base 19.05.0.1
  slurm_conf_init@Base 19.05.0.1
@@ -227,7 +225,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_job_notify_msg@Base 19.05.0.1
  slurm_free_job_step_create_request_msg@Base 19.05.0.1
  slurm_free_job_step_create_response_msg@Base 19.05.0.1
- slurm_free_job_step_id_msg@Base 19.05.0.1
  slurm_free_job_step_info_members@Base 19.05.0.1
  slurm_free_job_step_info_request_msg@Base 19.05.0.1
  slurm_free_job_step_info_response_msg@Base 19.05.0.1
@@ -240,8 +237,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_last_update_msg@Base 19.05.0.1
  slurm_free_launch_tasks_request_msg@Base 19.05.0.1
  slurm_free_launch_tasks_response_msg@Base 19.05.0.1
- slurm_free_layout_info_msg@Base 19.05.0.1
- slurm_free_layout_info_request_msg@Base 19.05.0.1
  slurm_free_license_info_msg@Base 19.05.0.1
  slurm_free_license_info_request_msg@Base 19.05.0.1
  slurm_free_msg@Base 19.05.0.1
@@ -260,7 +255,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_partition_info_members@Base 19.05.0.1
  slurm_free_partition_info_msg@Base 19.05.0.1
  slurm_free_ping_slurmd_resp@Base 19.05.0.1
- slurm_free_powercap_info_msg@Base 19.05.0.1
  slurm_free_priority_factors_request_msg@Base 19.05.0.1
  slurm_free_priority_factors_response_msg@Base 19.05.0.1
  slurm_free_prolog_launch_msg@Base 19.05.0.1
@@ -287,8 +281,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_sib_msg@Base 19.05.0.1
  slurm_free_signal_tasks_msg@Base 19.05.0.1
  slurm_free_slurmd_status@Base 19.05.0.1
- slurm_free_spank_env_request_msg@Base 19.05.0.1
- slurm_free_spank_env_responce_msg@Base 19.05.0.1
  slurm_free_srun_exec_msg@Base 19.05.0.1
  slurm_free_srun_job_complete_msg@Base 19.05.0.1
  slurm_free_srun_node_fail_msg@Base 19.05.0.1
@@ -298,7 +290,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_srun_user_msg@Base 19.05.0.1
  slurm_free_stats_info_request_msg@Base 19.05.0.1
  slurm_free_stats_response_msg@Base 19.05.0.1
- slurm_free_step_alloc_info_msg@Base 19.05.0.1
  slurm_free_step_complete_msg@Base 19.05.0.1
  slurm_free_submit_response_response_msg@Base 19.05.0.1
  slurm_free_suspend_int_msg@Base 19.05.0.1
@@ -309,171 +300,47 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_topo_info_msg@Base 19.05.0.1
  slurm_free_trigger_msg@Base 19.05.0.1
  slurm_free_update_front_end_msg@Base 19.05.0.1
- slurm_free_update_job_time_msg@Base 19.05.0.1
- slurm_free_update_layout_msg@Base 19.05.0.1
  slurm_free_update_node_msg@Base 19.05.0.1
  slurm_free_update_part_msg@Base 19.05.0.1
  slurm_free_update_step_msg@Base 19.05.0.1
  slurm_free_will_run_response_msg@Base 19.05.0.1
- slurm_get_accounting_storage_backup_host@Base 19.05.0.1
- slurm_get_accounting_storage_enforce@Base 19.05.0.1
- slurm_get_accounting_storage_host@Base 19.05.0.1
- slurm_get_accounting_storage_loc@Base 19.05.0.1
- slurm_get_accounting_storage_pass@Base 19.05.0.1
- slurm_get_accounting_storage_port@Base 19.05.0.1
- slurm_get_accounting_storage_tres@Base 19.05.0.1
- slurm_get_accounting_storage_type@Base 19.05.0.1
- slurm_get_accounting_storage_user@Base 19.05.0.1
- slurm_get_acct_gather_energy_type@Base 19.05.0.1
  slurm_get_acct_gather_filesystem_type@Base 19.05.0.1
  slurm_get_acct_gather_interconnect_type@Base 19.05.0.1
  slurm_get_acct_gather_node_freq@Base 19.05.0.1
- slurm_get_acct_gather_profile_type@Base 19.05.0.1
- slurm_get_addr@Base 19.05.0.1
- slurm_get_auth_alt_types@Base 19.05.0.1
- slurm_get_auth_info@Base 19.05.0.1
  slurm_get_auth_ttl@Base 19.05.0.1
- slurm_get_auth_type@Base 19.05.0.1
- slurm_get_batch_start_timeout@Base 19.05.0.1
- slurm_get_bb_type@Base 19.05.0.1
- slurm_get_cli_filter_plugins@Base 19.05.0.1
- slurm_get_cluster_name@Base 19.05.0.1
- slurm_get_comm_parameters@Base 19.05.0.1
- slurm_get_complete_wait@Base 19.05.0.1
- slurm_get_control_cnt@Base 19.05.0.1
  slurm_get_convert_unit_val@Base 19.05.0.1
  slurm_get_core_spec_plugin@Base 19.05.0.1
- slurm_get_cpu_freq_def@Base 19.05.0.1
- slurm_get_cpu_freq_govs@Base 19.05.0.1
- slurm_get_cred_type@Base 19.05.0.1
- slurm_get_debug_flags@Base 19.05.0.1
- slurm_get_def_mem_per_cpu@Base 19.05.0.1
  slurm_get_end_time@Base 19.05.0.1
- slurm_get_env_timeout@Base 19.05.0.1
- slurm_get_epilog_msg_time@Base 19.05.0.1
  slurm_get_errno@Base 19.05.0.1
  slurm_get_ext_sensors_freq@Base 19.05.0.1
  slurm_get_ext_sensors_type@Base 19.05.0.1
  slurm_get_extra_conf_path@Base 19.05.0.1
- slurm_get_fs_dampening_factor@Base 19.05.0.1
  slurm_get_gpu_freq_def@Base 19.05.0.1
- slurm_get_gres_plugins@Base 19.05.0.1
- slurm_get_hash_val@Base 19.05.0.1
- slurm_get_health_check_program@Base 19.05.0.1
  slurm_get_ip_str@Base 19.05.0.1
- slurm_get_is_association_based_accounting@Base 19.05.0.1
- slurm_get_job_acct_oom_kill@Base 19.05.0.1
- slurm_get_job_container_plugin@Base 19.05.0.1
- slurm_get_job_slurmctld_logfile@Base 19.05.0.1
  slurm_get_job_stderr@Base 19.05.0.1
  slurm_get_job_stdin@Base 19.05.0.1
  slurm_get_job_stdout@Base 19.05.0.1
  slurm_get_job_steps@Base 19.05.0.1
- slurm_get_job_submit_plugins@Base 19.05.0.1
- slurm_get_jobacct_gather_freq@Base 19.05.0.1
- slurm_get_jobacct_gather_params@Base 19.05.0.1
- slurm_get_jobacct_gather_type@Base 19.05.0.1
- slurm_get_jobcomp_host@Base 19.05.0.1
- slurm_get_jobcomp_loc@Base 19.05.0.1
- slurm_get_jobcomp_pass@Base 19.05.0.1
- slurm_get_jobcomp_port@Base 19.05.0.1
- slurm_get_jobcomp_type@Base 19.05.0.1
- slurm_get_jobcomp_user@Base 19.05.0.1
  slurm_get_keep_alive_time@Base 19.05.0.1
- slurm_get_kill_on_bad_exit@Base 19.05.0.1
- slurm_get_kill_wait@Base 19.05.0.1
- slurm_get_kvs_comm_set@Base 19.05.0.1
- slurm_get_launch_params@Base 19.05.0.1
- slurm_get_launch_type@Base 19.05.0.1
- slurm_get_layouts@Base 19.05.0.1
  slurm_get_log_level@Base 19.05.0.1
- slurm_get_max_array_size@Base 19.05.0.1
- slurm_get_max_mem_per_cpu@Base 19.05.0.1
- slurm_get_mcs_plugin@Base 19.05.0.1
- slurm_get_mcs_plugin_params@Base 19.05.0.1
- slurm_get_mpi_default@Base 19.05.0.1
- slurm_get_mpi_params@Base 19.05.0.1
- slurm_get_msg_aggr_params@Base 19.05.0.1
- slurm_get_msg_timeout@Base 19.05.0.1
  slurm_get_node_energy@Base 19.05.0.1
- slurm_get_node_features_plugins@Base 19.05.0.1
  slurm_get_peer_addr@Base 19.05.0.1
- slurm_get_plugin_dir@Base 19.05.0.1
- slurm_get_power_parameters@Base 19.05.0.1
- slurm_get_power_plugin@Base 19.05.0.1
- slurm_get_preempt_mode@Base 19.05.0.1
  slurm_get_preempt_type@Base 19.05.0.1
- slurm_get_priority_calc_period@Base 19.05.0.1
- slurm_get_priority_decay_hl@Base 19.05.0.1
- slurm_get_priority_favor_small@Base 19.05.0.1
- slurm_get_priority_flags@Base 19.05.0.1
- slurm_get_priority_max_age@Base 19.05.0.1
- slurm_get_priority_params@Base 19.05.0.1
- slurm_get_priority_reset_period@Base 19.05.0.1
- slurm_get_priority_site_factor_params@Base 19.05.0.1
- slurm_get_priority_site_factor_plugin@Base 19.05.0.1
- slurm_get_priority_type@Base 19.05.0.1
- slurm_get_priority_weight_age@Base 19.05.0.1
- slurm_get_priority_weight_assoc@Base 19.05.0.1
- slurm_get_priority_weight_fairshare@Base 19.05.0.1
- slurm_get_priority_weight_job_size@Base 19.05.0.1
- slurm_get_priority_weight_partition@Base 19.05.0.1
- slurm_get_priority_weight_qos@Base 19.05.0.1
- slurm_get_priority_weight_tres@Base 19.05.0.1
- slurm_get_private_data@Base 19.05.0.1
- slurm_get_proctrack_type@Base 19.05.0.1
- slurm_get_prolog_flags@Base 19.05.0.1
- slurm_get_prolog_timeout@Base 19.05.0.1
- slurm_get_propagate_prio_process@Base 19.05.0.1
- slurm_get_reboot_program@Base 19.05.0.1
  slurm_get_rem_time@Base 19.05.0.1
- slurm_get_resume_fail_program@Base 19.05.0.1
- slurm_get_resume_program@Base 19.05.0.1
- slurm_get_resume_timeout@Base 19.05.0.1
  slurm_get_return_code@Base 19.05.0.1
- slurm_get_route_plugin@Base 19.05.0.1
- slurm_get_sbcast_parameters@Base 19.05.0.1
  slurm_get_sched_log_level@Base 19.05.0.1
  slurm_get_sched_params@Base 19.05.0.1
- slurm_get_sched_type@Base 19.05.0.1
  slurm_get_select_nodeinfo@Base 19.05.0.1
  slurm_get_select_type@Base 19.05.0.1
- slurm_get_select_type_param@Base 19.05.0.1
- slurm_get_slurm_user_id@Base 19.05.0.1
- slurm_get_slurmctld_params@Base 19.05.0.1
- slurm_get_slurmctld_plugstack@Base 19.05.0.1
- slurm_get_slurmctld_timeout@Base 19.05.0.1
- slurm_get_slurmd_params@Base 19.05.0.1
- slurm_get_slurmd_port@Base 19.05.0.1
- slurm_get_slurmd_spooldir@Base 19.05.0.1
- slurm_get_slurmd_user_id@Base 19.05.0.1
- slurm_get_srun_eio_timeout@Base 19.05.0.1
- slurm_get_srun_epilog@Base 19.05.0.1
  slurm_get_srun_port_range@Base 19.05.0.1
- slurm_get_srun_prolog@Base 19.05.0.1
- slurm_get_state_save_location@Base 19.05.0.1
  slurm_get_statistics@Base 19.05.0.1
  slurm_get_stepd_loc@Base 19.05.0.1
  slurm_get_stream_addr@Base 19.05.0.1
- slurm_get_suspend_time@Base 19.05.0.1
- slurm_get_suspend_timeout@Base 19.05.0.1
- slurm_get_switch_type@Base 19.05.0.1
- slurm_get_task_epilog@Base 19.05.0.1
- slurm_get_task_plugin@Base 19.05.0.1
- slurm_get_task_plugin_param@Base 19.05.0.1
- slurm_get_task_prolog@Base 19.05.0.1
- slurm_get_tcp_timeout@Base 19.05.0.1
- slurm_get_time_slice@Base 19.05.0.1
  slurm_get_tmp_fs@Base 19.05.0.1
- slurm_get_topology_param@Base 19.05.0.1
- slurm_get_topology_plugin@Base 19.05.0.1
  slurm_get_track_wckey@Base 19.05.0.1
- slurm_get_tree_width@Base 19.05.0.1
  slurm_get_tres_weight_array@Base 19.05.0.1
  slurm_get_triggers@Base 19.05.0.1
  slurm_get_unit_type@Base 19.05.0.1
- slurm_get_vsize_factor@Base 19.05.0.1
- slurm_get_wait_time@Base 19.05.0.1
  slurm_getenvp@Base 19.05.0.1
  slurm_getpwuid_r@Base 19.05.0.1
  slurm_gres_2_tres_str@Base 19.05.0.1
@@ -621,7 +488,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_load_job_prio@Base 19.05.0.1
  slurm_load_job_user@Base 19.05.0.1
  slurm_load_jobs@Base 19.05.0.1
- slurm_load_layout@Base 19.05.0.1
  slurm_load_licenses@Base 19.05.0.1
  slurm_load_node2@Base 19.05.0.1
  slurm_load_node@Base 19.05.0.1
@@ -629,7 +495,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_load_node_single@Base 19.05.0.1
  slurm_load_partitions2@Base 19.05.0.1
  slurm_load_partitions@Base 19.05.0.1
- slurm_load_powercap@Base 19.05.0.1
  slurm_load_reservations@Base 19.05.0.1
  slurm_load_slurmd_status@Base 19.05.0.1
  slurm_load_topo@Base 19.05.0.1
@@ -662,7 +527,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_msg_sendto_timeout@Base 19.05.0.1
  slurm_msg_t_copy@Base 19.05.0.1
  slurm_msg_t_init@Base 19.05.0.1
- slurm_net_set_low_water@Base 19.05.0.1
  slurm_net_stream_listen@Base 19.05.0.1
  slurm_network_callerid@Base 19.05.0.1
  slurm_node_state_string@Base 19.05.0.1
@@ -754,18 +618,15 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_print_job_step_info_msg@Base 19.05.0.1
  slurm_print_key_pairs@Base 19.05.0.1
  slurm_print_launch_task_msg@Base 19.05.0.1
- slurm_print_layout_info@Base 19.05.0.1
  slurm_print_mem_bind_help@Base 19.05.0.1
  slurm_print_multi_line_string@Base 19.05.0.1
  slurm_print_node_info_msg@Base 19.05.0.1
  slurm_print_node_table@Base 19.05.0.1
  slurm_print_partition_info@Base 19.05.0.1
  slurm_print_partition_info_msg@Base 19.05.0.1
- slurm_print_powercap_info_msg@Base 19.05.0.1
  slurm_print_reservation_info@Base 19.05.0.1
  slurm_print_reservation_info_msg@Base 19.05.0.1
  slurm_print_set_options@Base 19.05.0.1
- slurm_print_slurm_addr@Base 19.05.0.1
  slurm_print_slurmd_status@Base 19.05.0.1
  slurm_print_topo_info_msg@Base 19.05.0.1
  slurm_print_topo_record@Base 19.05.0.1
@@ -777,7 +638,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_pull_trigger@Base 19.05.0.1
  slurm_read_hostfile@Base 19.05.0.1
  slurm_read_stream@Base 19.05.0.1
- slurm_read_stream_timeout@Base 19.05.0.1
  slurm_receive_msg@Base 19.05.0.1
  slurm_receive_msg_and_forward@Base 19.05.0.1
  slurm_receive_msgs@Base 19.05.0.1
@@ -821,7 +681,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_select_fini@Base 19.05.0.1
  slurm_select_init@Base 19.05.0.1
  slurm_send_addr_recv_msgs@Base 19.05.0.1
- slurm_send_kvs_comm_set@Base 19.05.0.1
  slurm_send_msg@Base 19.05.0.1
  slurm_send_msg_maybe@Base 19.05.0.1
  slurm_send_node_msg@Base 19.05.0.1
@@ -837,30 +696,15 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_send_recv_rc_msg_only_one@Base 19.05.0.1
  slurm_send_reroute_msg@Base 19.05.0.1
  slurm_send_timeout@Base 19.05.0.1
- slurm_set_accounting_storage_host@Base 19.05.0.1
- slurm_set_accounting_storage_loc@Base 19.05.0.1
- slurm_set_accounting_storage_port@Base 19.05.0.1
- slurm_set_accounting_storage_tres@Base 19.05.0.1
- slurm_set_accounting_storage_user@Base 19.05.0.1
  slurm_set_addr@Base 19.05.0.1
- slurm_set_addr_char@Base 19.05.0.1
- slurm_set_auth_type@Base 19.05.0.1
- slurm_set_debug_flags@Base 19.05.0.1
  slurm_set_debug_level@Base 19.05.0.1
  slurm_set_debugflags@Base 19.05.0.1
- slurm_set_fs_dampening_factor@Base 19.05.0.1
  slurm_set_fs_dampeningfactor@Base 19.05.0.1
- slurm_set_jobcomp_port@Base 19.05.0.1
- slurm_set_launch_type@Base 19.05.0.1
- slurm_set_power_parameters@Base 19.05.0.1
  slurm_set_schedlog_level@Base 19.05.0.1
- slurm_set_select_type_param@Base 19.05.0.1
- slurm_set_tree_width@Base 19.05.0.1
  slurm_set_trigger@Base 19.05.0.1
  slurm_setenvpf@Base 19.05.0.1
  slurm_seterrno@Base 19.05.0.1
  slurm_setup_remote_working_cluster@Base 19.05.0.1
- slurm_setup_sockaddr@Base 19.05.0.1
  slurm_shutdown@Base 19.05.0.1
  slurm_signal_job@Base 19.05.0.1
  slurm_signal_job_step@Base 19.05.0.1
@@ -940,7 +784,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_unpackdouble@Base 19.05.0.1
  slurm_unpackfloat@Base 19.05.0.1
  slurm_unpacklongdouble@Base 19.05.0.1
- slurm_unpackmem@Base 19.05.0.1
  slurm_unpackmem_array@Base 19.05.0.1
  slurm_unpackmem_malloc@Base 19.05.0.1
  slurm_unpackmem_ptr@Base 19.05.0.1
@@ -952,10 +795,8 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_update_front_end@Base 19.05.0.1
  slurm_update_job2@Base 19.05.0.1
  slurm_update_job@Base 19.05.0.1
- slurm_update_layout@Base 19.05.0.1
  slurm_update_node@Base 19.05.0.1
  slurm_update_partition@Base 19.05.0.1
- slurm_update_powercap@Base 19.05.0.1
  slurm_update_reservation@Base 19.05.0.1
  slurm_update_step@Base 19.05.0.1
  slurm_verbose@Base 19.05.0.1
@@ -963,7 +804,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_verify_mem_bind@Base 19.05.0.1
  slurm_write_ctl_conf@Base 19.05.0.1
  slurm_write_stream@Base 19.05.0.1
- slurm_write_stream_timeout@Base 19.05.0.1
  slurm_xassert_failed@Base 19.05.0.1
  slurm_xbasename@Base 19.05.0.1
  slurm_xcalloc@Base 19.05.0.1
@@ -1033,7 +873,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurmdb_config_get@Base 19.05.0.1
  slurmdb_connection_close@Base 19.05.0.1
  slurmdb_connection_commit@Base 19.05.0.1
- slurmdb_connection_get2@Base 19.05.0.1
  slurmdb_connection_get@Base 19.05.0.1
  slurmdb_coord_add@Base 19.05.0.1
  slurmdb_coord_remove@Base 19.05.0.1
@@ -1083,7 +922,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurmdb_destroy_res_rec@Base 19.05.0.1
  slurmdb_destroy_reservation_cond@Base 19.05.0.1
  slurmdb_destroy_reservation_rec@Base 19.05.0.1
- slurmdb_destroy_selected_step@Base 19.05.0.1
  slurmdb_destroy_slurmdb_stats@Base 19.05.0.1
  slurmdb_destroy_stats_rec@Base 19.05.0.1
  slurmdb_destroy_step_rec@Base 19.05.0.1
@@ -1127,7 +965,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurmdb_get_hierarchical_sorted_assoc_list@Base 19.05.0.1
  slurmdb_get_info_cluster@Base 19.05.0.1
  slurmdb_get_qos_complete_str_bitstr@Base 19.05.0.1
- slurmdb_get_selected_step_id@Base 19.05.0.1
  slurmdb_get_stats@Base 19.05.0.1
  slurmdb_get_tres_base_unit@Base 19.05.0.1
  slurmdb_init_assoc_rec@Base 19.05.0.1
@@ -1182,7 +1019,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurmdb_pack_res_rec@Base 19.05.0.1
  slurmdb_pack_reservation_cond@Base 19.05.0.1
  slurmdb_pack_reservation_rec@Base 19.05.0.1
- slurmdb_pack_selected_step@Base 19.05.0.1
  slurmdb_pack_stats_msg@Base 19.05.0.1
  slurmdb_pack_step_rec@Base 19.05.0.1
  slurmdb_pack_tres_cond@Base 19.05.0.1
@@ -1272,7 +1108,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurmdb_unpack_res_rec@Base 19.05.0.1
  slurmdb_unpack_reservation_cond@Base 19.05.0.1
  slurmdb_unpack_reservation_rec@Base 19.05.0.1
- slurmdb_unpack_selected_step@Base 19.05.0.1
  slurmdb_unpack_stats_msg@Base 19.05.0.1
  slurmdb_unpack_step_rec@Base 19.05.0.1
  slurmdb_unpack_tres_cond@Base 19.05.0.1
@@ -1321,10 +1156,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_options_members@Base 20.02.0.1
  slurm_free_token_request_msg@Base 20.02.0.1
  slurm_free_token_response_msg@Base 20.02.0.1
- slurm_get_accounting_storage_ext_host@Base 20.02.0.1
- slurm_get_dependency_params@Base 20.02.0.1
- slurm_get_jobcomp_params@Base 20.02.0.1
- slurm_get_prep_plugins@Base 20.02.0.1
  slurm_het_job_lookup@Base 20.02.0.1
  slurm_het_job_will_run@Base 20.02.0.1
  slurm_hostlist2bitmap@Base 20.02.0.1
@@ -1341,13 +1172,49 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_running_in_slurmctld@Base 20.02.0.1
  slurm_running_in_slurmd@Base 20.02.0.1
  slurm_running_in_slurmdbd@Base 20.02.0.1
- slurm_running_in_slurmdstepd@Base 20.02.0.1
  slurm_running_in_slurmrestd@Base 20.02.0.1
  slurm_running_in_slurmstepd@Base 20.02.0.1
  slurm_send_fd_over_pipe@Base 20.02.0.1
  slurm_slurmdbd_pack_fini_msg@Base 20.02.0.1
  slurm_spank_log@Base 20.02.0.1
- slurm_stepd_connect_nss@Base 20.02.0.1
  slurm_submit_batch_het_job@Base 20.02.0.1
  slurm_xfree_ptr@Base 20.02.0.1
  slurm_xstrfmtcatat@Base 20.02.0.1
+ slurm_addr_is_unspec@Base 20.11.0.1
+ slurm_bit_fmt_hexmask_trim@Base 20.11.0.1
+ slurm_conf@Base 20.11.0.1
+ slurm_copy_resource_allocation_response_msg@Base 20.11.0.1
+ slurm_cred_send_gids_enabled@Base 20.11.0.1
+ slurmdb_merge_grp_node_usage@Base 20.11.0.1
+ slurm_destroy_selected_step@Base 20.11.0.1
+ slurm_fini@Base 20.11.0.1
+ slurm_free_crontab_request_msg@Base 20.11.0.1
+ slurm_free_crontab_response_msg@Base 20.11.0.1
+ slurm_free_crontab_update_request_msg@Base 20.11.0.1
+ slurm_free_crontab_update_response_msg@Base 20.11.0.1
+ slurm_free_resv_desc_msg_part@Base 20.11.0.1
+ slurm_free_step_id@Base 20.11.0.1
+ slurm_get_port@Base 20.11.0.1
+ slurm_get_selected_step_id@Base 20.11.0.1
+ slurm_init@Base 20.11.0.1
+ slurm_list_delete_ptr@Base 20.11.0.1
+ slurm_pack_addr@Base 20.11.0.1
+ slurm_pack_addr_array@Base 20.11.0.1
+ slurm_pack_selected_step@Base 20.11.0.1
+ slurm_parse_step_str@Base 20.11.0.1
+ slurm_pmi_free_kvs_comm_set@Base 20.11.0.1
+ slurm_pmi_get_kvs_comm_set@Base 20.11.0.1
+ slurm_pmi_kill_job_step@Base 20.11.0.1
+ slurm_pmi_send_kvs_comm_set@Base 20.11.0.1
+ slurm_remove_crontab@Base 20.11.0.1
+ slurm_request_crontab@Base 20.11.0.1
+ slurm_running_in_slurmd_stepd@Base 20.11.0.1
+ slurm_set_port@Base 20.11.0.1
+ slurm_setup_addr@Base 20.11.0.1
+ slurm_step_layout_merge@Base 20.11.0.1
+ slurm_unpack_addr_array@Base 20.11.0.1
+ slurm_unpack_addr_no_alloc@Base 20.11.0.1
+ slurm_unpack_selected_step@Base 20.11.0.1
+ slurm_update_crontab@Base 20.11.0.1
+ slurm_with_slurmdbd@Base 20.11.0.1
+ slurm_process_option_or_exit@Base 20.11.3.1

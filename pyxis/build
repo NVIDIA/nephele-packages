@@ -43,7 +43,7 @@ rc() {
         equivs \
         fakeroot \
         lintian
-    apt-get -y install /mnt/libslurm-dev*.deb /mnt/libslurm35*.deb
+    apt-get -y install /mnt/libslurm*.deb
 
     mkdir -p /usr/local/src/pyxis && cd /usr/local/src/pyxis
 

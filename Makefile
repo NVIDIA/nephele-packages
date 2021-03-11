@@ -16,7 +16,7 @@
 
 CONTAINER_NAME        ?= ubuntu
 UBUNTU_VERSION        ?= 20.04
-SLURM_VERSION         ?= 20.02.6.1
+SLURM_VERSION         ?= 20.11.4.1
 PYXIS_VERSION         ?= 0.9.1
 GDRCOPY_VERSION       ?= f203d7510aa3cec9f0d8238be18e1efa77494fa1
 GPUDIRECT_VERSION     ?= 1.1-0

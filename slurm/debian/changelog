@@ -1,3 +1,9 @@
+#PACKAGE# (20.11.4.1+nvidia-1) UNRELEASED; urgency=medium
+
+  * Slurm 20.11.4.1
+
+ -- #USERNAME# <#EMAIL#>  Thu, 11 Mar 2021 01:58:23 +0000
+
 #PACKAGE# (20.02.6.1+nvidia-1) UNRELEASED; urgency=medium
 
   * Slurm 20.02.6.1
