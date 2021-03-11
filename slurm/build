@@ -56,6 +56,9 @@ rc() {
     apt-get -y update && apt-get -y install --no-install-recommends \
         libnvidia-compute-${NVIDIA_DRIVER_VERSION%%.*}
 
+    apt-get -y install /mnt/libpmix*.deb
+
+
     mkdir -p /usr/local/src/slurm && cd /usr/local/src/slurm
 
     pkgname=nvslurm

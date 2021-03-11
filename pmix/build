@@ -1,0 +1,49 @@
+#! /usr/bin/enroot batch
+#ENROOT_REMAP_ROOT=y
+#ENROOT_ROOTFS_WRITABLE=y
+#ENROOT_ROOTFS=${CONTAINER_NAME}
+
+# Copyright (c) 2020, NVIDIA CORPORATION. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+mounts() {
+    echo "$(dirname $0)/.. /mnt bind,x-create=dir"
+}
+
+environ() {
+    echo "SHELL=/bin/bash"
+    echo "LANG=C.UTF-8"
+    echo "DEB_BUILD_OPTIONS='parallel=$(nproc)'"
+}
+
+rc() {
+    set -eux
+
+    apt-get -y update && apt-get -y install --no-install-recommends \
+        ca-certificates \
+        devscripts      \
+        fakeroot        \
+        gnupg2
+
+    mkdir -p /usr/local/src/pmix && cd /usr/local/src/pmix
+
+    echo 'deb-src http://old-releases.ubuntu.com/ubuntu disco universe' > /etc/apt/sources.list.d/disco.list
+    apt-get -y update && apt-get -y build-dep pmix
+    apt-get -y source pmix
+
+    cd pmix*/ && debuild -us -uc -G -i -tc
+
+    cd ..
+    cp *.orig.tar.* *.debian.tar.* *.dsc *.deb /mnt
+}
