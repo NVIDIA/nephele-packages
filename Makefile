@@ -12,25 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: all slurm pyxis gdrcopy gpudirect mostlyclean clean
+.PHONY: all slurm pyxis gdrcopy mostlyclean clean
 
 CONTAINER_NAME        ?= ubuntu
 UBUNTU_VERSION        ?= 20.04
 SLURM_VERSION         ?= 20.11.4.1
 PYXIS_VERSION         ?= 0.9.1
 GDRCOPY_VERSION       ?= f203d7510aa3cec9f0d8238be18e1efa77494fa1
-GPUDIRECT_VERSION     ?= 1.1-0
 NVIDIA_DRIVER_VERSION ?= 460.32.03-0ubuntu1
 KERNEL_VERSION        ?= generic
 
 export
 
-all: slurm pyxis gdrcopy gpudirect
+all: slurm pyxis gdrcopy
 
 slurm: .slurm.stamp
 pyxis: .pyxis.stamp | slurm
 gdrcopy: .gdrcopy.stamp
-gpudirect: .gpudirect.stamp
 
 .%.stamp: .$(CONTAINER_NAME).stamp
 	$*/build
