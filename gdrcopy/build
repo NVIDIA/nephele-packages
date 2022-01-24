@@ -56,9 +56,9 @@ rc() {
 
     mkdir -p /usr/local/src/gdrcopy && cd /usr/local/src/gdrcopy
     curl -fSsL https://github.com/NVIDIA/gdrcopy/archive/${GDRCOPY_VERSION}.tar.gz | tar --strip-components=1 -xz
-    patch -p1 < /mnt/gdrcopy/gdrcopy.patch
 
-    cd packages && CUDA=/var/empty KVER=$(ls /lib/modules) ./build-deb-packages.sh
+    cd packages && CUDA=/var/empty KVER=$(ls /lib/modules) ./build-deb-packages.sh -t
+    rename.ul ".$(. /etc/os-release; echo ${NAME}${VERSION_ID/./_})" "" *.deb
 
     cp *.orig.tar.* *.debian.tar.* *.dsc *.deb /mnt
 }
