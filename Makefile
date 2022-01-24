@@ -16,10 +16,10 @@
 
 CONTAINER_NAME        ?= ubuntu
 UBUNTU_VERSION        ?= 20.04
-SLURM_VERSION         ?= 20.11.4.1
-PYXIS_VERSION         ?= 0.9.1
+SLURM_VERSION         ?= 21.08.5.1
+PYXIS_VERSION         ?= 0.11.1
 GDRCOPY_VERSION       ?= v2.3
-NVIDIA_DRIVER_VERSION ?= 460.32.03-0ubuntu1
+NVIDIA_DRIVER_VERSION ?= 470.82.01-0ubuntu1
 KERNEL_VERSION        ?= generic
 
 export

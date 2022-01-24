@@ -8,15 +8,15 @@ include /usr/share/dpkg/pkg-info.mk
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-bindnow
 
 PACKAGE := #PACKAGE#
-SLURM_MAJOR := 36
+SLURM_MAJOR := 37
 SLURM_UID := 64030
 ifndef NVIDIA_DRIVER_VERSION
 $(error NVIDIA_DRIVER_VERSION is not set)
 endif
 
 # XXX: Specificy NVML stubs manually otherwise autotools won't find them
-export DEB_CPPFLAGS_MAINT_APPEND = -I/usr/local/cuda-11.0/targets/$(DEB_HOST_GNU_CPU)-$(DEB_HOST_ARCH_OS)/include
-export DEB_LDFLAGS_MAINT_APPEND = -L/usr/local/cuda-11.0/targets/$(DEB_HOST_GNU_CPU)-$(DEB_HOST_ARCH_OS)/lib/stubs
+export DEB_CPPFLAGS_MAINT_APPEND = -I/usr/local/cuda-11.4/targets/$(DEB_HOST_GNU_CPU)-$(DEB_HOST_ARCH_OS)/include
+export DEB_LDFLAGS_MAINT_APPEND = -L/usr/local/cuda-11.4/targets/$(DEB_HOST_GNU_CPU)-$(DEB_HOST_ARCH_OS)/lib/stubs
 
 %:
 	-rename.ul PACKAGE $(PACKAGE) $(CURDIR)/debian/*

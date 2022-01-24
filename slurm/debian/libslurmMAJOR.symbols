@@ -129,7 +129,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_cred_insert_jobid@Base 19.05.0.1
  slurm_cred_jobid_cached@Base 19.05.0.1
  slurm_cred_pack@Base 19.05.0.1
- slurm_cred_print@Base 19.05.0.1
  slurm_cred_revoke@Base 19.05.0.1
  slurm_cred_revoked@Base 19.05.0.1
  slurm_cred_rewind@Base 19.05.0.1
@@ -204,7 +203,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_free_ctld_multi_msg@Base 19.05.0.1
  slurm_free_delete_part_msg@Base 19.05.0.1
  slurm_free_epilog_complete_msg@Base 19.05.0.1
- slurm_free_event_log_msg@Base 19.05.0.1
  slurm_free_file_bcast_msg@Base 19.05.0.1
  slurm_free_forward_data_msg@Base 19.05.0.1
  slurm_free_front_end_info_members@Base 19.05.0.1
@@ -329,7 +327,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_get_rem_time@Base 19.05.0.1
  slurm_get_return_code@Base 19.05.0.1
  slurm_get_sched_log_level@Base 19.05.0.1
- slurm_get_sched_params@Base 19.05.0.1
  slurm_get_select_nodeinfo@Base 19.05.0.1
  slurm_get_select_type@Base 19.05.0.1
  slurm_get_srun_port_range@Base 19.05.0.1
@@ -343,19 +340,12 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_get_unit_type@Base 19.05.0.1
  slurm_getenvp@Base 19.05.0.1
  slurm_getpwuid_r@Base 19.05.0.1
- slurm_gres_2_tres_str@Base 19.05.0.1
- slurm_gres_build_job_details@Base 19.05.0.1
  slurm_gres_device_major@Base 19.05.0.1
  slurm_gres_get_job_info@Base 19.05.0.1
- slurm_gres_get_job_state@Base 19.05.0.1
  slurm_gres_get_node_used@Base 19.05.0.1
  slurm_gres_get_step_info@Base 19.05.0.1
- slurm_gres_get_step_state@Base 19.05.0.1
  slurm_gres_get_system_cnt@Base 19.05.0.1
  slurm_gres_get_value_by_type@Base 19.05.0.1
- slurm_gres_gresid_to_gresname@Base 19.05.0.1
- slurm_gres_set_job_tres_cnt@Base 19.05.0.1
- slurm_gres_set_node_tres_cnt@Base 19.05.0.1
  slurm_grow_buf@Base 19.05.0.1
  slurm_hex_to_char@Base 19.05.0.1
  slurm_hostlist_copy@Base 19.05.0.1
@@ -447,10 +437,8 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_jobacctinfo_destroy@Base 19.05.0.1
  slurm_jobacctinfo_pack@Base 19.05.0.1
  slurm_jobacctinfo_unpack@Base 19.05.0.1
- slurm_jobinfo_ctx_get@Base 19.05.0.1
  slurm_kill_job2@Base 19.05.0.1
  slurm_kill_job@Base 19.05.0.1
- slurm_kill_job_msg@Base 19.05.0.1
  slurm_kill_job_step@Base 19.05.0.1
  slurm_list_append@Base 19.05.0.1
  slurm_list_append_list@Base 19.05.0.1
@@ -630,8 +618,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_print_slurmd_status@Base 19.05.0.1
  slurm_print_topo_info_msg@Base 19.05.0.1
  slurm_print_topo_record@Base 19.05.0.1
- slurm_priority_fini@Base 19.05.0.1
- slurm_priority_init@Base 19.05.0.1
  slurm_private_data_string@Base 19.05.0.1
  slurm_process_option@Base 19.05.0.1
  slurm_prog_name@Base 19.05.0.1
@@ -722,13 +708,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_sprint_node_table@Base 19.05.0.1
  slurm_sprint_partition_info@Base 19.05.0.1
  slurm_sprint_reservation_info@Base 19.05.0.1
- slurm_step_ctx_create@Base 19.05.0.1
- slurm_step_ctx_create_no_alloc@Base 19.05.0.1
- slurm_step_ctx_create_timeout@Base 19.05.0.1
- slurm_step_ctx_daemon_per_node_hack@Base 19.05.0.1
- slurm_step_ctx_destroy@Base 19.05.0.1
- slurm_step_ctx_get@Base 19.05.0.1
- slurm_step_ctx_params_t_init@Base 19.05.0.1
  slurm_step_launch@Base 19.05.0.1
  slurm_step_launch_abort@Base 19.05.0.1
  slurm_step_launch_add@Base 19.05.0.1
@@ -742,11 +721,9 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_step_layout_host_id@Base 19.05.0.1
  slurm_step_layout_host_name@Base 19.05.0.1
  slurm_step_layout_type_name@Base 19.05.0.1
- slurm_step_retry_errno@Base 19.05.0.1
  slurm_stepd_add_extern_pid@Base 19.05.0.1
  slurm_stepd_available@Base 19.05.0.1
  slurm_stepd_connect@Base 19.05.0.1
- slurm_stepd_get_info@Base 19.05.0.1
  slurm_stepd_get_uid@Base 19.05.0.1
  slurm_stepd_get_x11_display@Base 19.05.0.1
  slurm_stepd_getgr@Base 19.05.0.1
@@ -807,9 +784,6 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_xassert_failed@Base 19.05.0.1
  slurm_xbasename@Base 19.05.0.1
  slurm_xcalloc@Base 19.05.0.1
- slurm_xcgroup_config_read_mutex@Base 19.05.0.1
- slurm_xcgroup_fini_slurm_cgroup_conf@Base 19.05.0.1
- slurm_xcgroup_get_slurm_cgroup_conf@Base 19.05.0.1
  slurm_xfer_buf_data@Base 19.05.0.1
  slurm_xfree@Base 19.05.0.1
  slurm_xfree_struct_group_array@Base 19.05.0.1
@@ -1218,3 +1192,29 @@ libslurm.so.#MAJOR# libslurm#MAJOR# #MINVER#
  slurm_update_crontab@Base 20.11.0.1
  slurm_with_slurmdbd@Base 20.11.0.1
  slurm_process_option_or_exit@Base 20.11.3.1
+ slurm_stepd_get_namespace_fd@Base 20.11.5.1
+ slurm_array64_to_value_reps@Base 21.08.0.0~rc2
+ slurm_cgroup_conf@Base 21.08.0.0~rc2
+ slurm_cgroup_conf_destroy@Base 21.08.0.0~rc2
+ slurm_cgroup_conf_init@Base 21.08.0.0~rc2
+ slurm_closeall@Base 21.08.0.0~rc2
+ slurm_cred_get_mem@Base 21.08.0.0~rc2
+ slurmdb_get_job_id_str@Base 21.08.0.0~rc2
+ slurm_get_rep_count_inx@Base 21.08.0.0~rc2
+ slurm_gres_find_id@Base 21.08.0.0~rc2
+ slurm_gres_find_sock_by_job_state@Base 21.08.0.0~rc2
+ slurm_gres_sock_delete@Base 21.08.0.0~rc2
+ slurm_list_delete_first@Base 21.08.0.0~rc2
+ slurm_list_flip@Base 21.08.0.0~rc2
+ slurm_node_state_base_string@Base 21.08.0.0~rc2
+ slurm_node_state_flag_string@Base 21.08.0.0~rc2
+ slurm_node_state_flag_string_single@Base 21.08.0.0~rc2
+ slurm_node_state_string_complete@Base 21.08.0.0~rc2
+ slurm_opt_create_job_desc@Base 21.08.0.0~rc2
+ slurm_option_get_argv_str@Base 21.08.0.0~rc2
+ slurm_valid_base_state@Base 21.08.0.0~rc2
+ slurm_xdirname@Base 21.08.0.0~rc2
+ slurm_list_flush_max@Base 21.08.3.1
+ slurm_pack_list_until@Base 21.08.3.1
+ slurm_xiso8601timecat@Base 21.08.3.1
+ slurm_xrfc5424timecat@Base 21.08.3.1

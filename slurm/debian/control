@@ -5,7 +5,7 @@ Maintainer: #USERNAME# <#EMAIL#>
 Standards-Version: #POLICY#
 Homepage: http://slurm.schedmd.com
 Build-Depends: #BUILD_DEPS#,
-               cuda-nvml-dev-11-0,
+               cuda-nvml-dev-11-4,
                default-libmysqlclient-dev,
                dh-exec,
                libcurl4-openssl-dev,

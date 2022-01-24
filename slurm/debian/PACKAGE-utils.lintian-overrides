@@ -1,3 +1,4 @@
-new-package-should-close-itp-bug
+binary-or-shlib-defines-rpath
 manpage-has-bad-whatis-entry
 manpage-has-errors-from-man
+new-package-should-close-itp-bug

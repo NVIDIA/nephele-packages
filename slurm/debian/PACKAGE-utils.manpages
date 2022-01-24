@@ -6,6 +6,7 @@ debian/tmp/usr/share/man/man1/sbatch.1
 debian/tmp/usr/share/man/man1/sbcast.1
 debian/tmp/usr/share/man/man1/scancel.1
 debian/tmp/usr/share/man/man1/scontrol.1
+debian/tmp/usr/share/man/man1/scrontab.1
 debian/tmp/usr/share/man/man1/sdiag.1
 debian/tmp/usr/share/man/man1/sinfo.1
 debian/tmp/usr/share/man/man1/sprio.1

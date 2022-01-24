@@ -5,9 +5,9 @@ ConditionPathExists=/etc/slurm/slurm.conf
 Documentation=man:slurmctld(8)
 
 [Service]
-Type=simple
+Type=forking
 EnvironmentFile=-/etc/default/slurmctld
-ExecStart=/usr/sbin/slurmctld -D $SLURMCTLD_OPTIONS
+ExecStart=/usr/sbin/slurmctld $SLURMCTLD_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
 PIDFile=/run/slurmctld.pid
 
