@@ -23,7 +23,7 @@ mounts() {
 
 environ() {
     echo "SHELL=/bin/bash"
-    echo "DEBFULLNAME=NVIDIA CORPORATION"
+    echo "DEBFULLNAME='NVIDIA CORPORATION'"
     echo "DEBEMAIL=cudatools@nvidia.com"
     echo "DO_RELEASE=${DO_RELEASE-}"
     echo "LANG=C.UTF-8"

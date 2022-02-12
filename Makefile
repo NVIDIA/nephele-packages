@@ -14,6 +14,8 @@
 
 .PHONY: all slurm pyxis gdrcopy mostlyclean clean
 
+SHELL := /bin/bash
+
 CONTAINER_NAME        ?= ubuntu
 UBUNTU_VERSION        ?= 20.04
 SLURM_VERSION         ?= 21.08.5.1
@@ -30,6 +32,8 @@ slurm: .slurm.stamp
 pyxis: .pyxis.stamp | slurm
 gdrcopy: .gdrcopy.stamp
 
+ifdef CONTAINERIZED_BUILD
+
 .%.stamp: .$(CONTAINER_NAME).stamp
 	$*/build
 	touch $@
@@ -44,6 +48,17 @@ ubuntu.sqsh:
 mostlyclean:
 	-enroot remove -f $(CONTAINER_NAME)
 	rm -f *.sqsh .*.stamp
+
+else
+
+.%.stamp:
+	source $*/build && source <(environ) && rc
+	touch $@
+
+mostlyclean:
+	rm -f *.sqsh .*.stamp
+
+endif
 
 clean: mostlyclean
 	rm -f *.orig.tar.* *.debian.tar.* *.dsc *.deb

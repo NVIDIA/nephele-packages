@@ -23,7 +23,7 @@ mounts() {
 
 environ() {
     echo "SHELL=/bin/bash"
-    echo "DEBFULLNAME=NVIDIA CORPORATION"
+    echo "DEBFULLNAME='NVIDIA CORPORATION'"
     echo "DEBEMAIL=cudatools@nvidia.com"
     echo "LANG=C.UTF-8"
     echo "DEB_BUILD_OPTIONS='parallel=$(nproc)'"
