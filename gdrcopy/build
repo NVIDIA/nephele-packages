@@ -48,7 +48,7 @@ rc() {
     osrel=$(. /etc/os-release; echo ${ID}${VERSION_ID/./})
 
     echo "deb https://developer.download.nvidia.com/compute/cuda/repos/${osrel}/x86_64 /" > /etc/apt/sources.list.d/cuda.list
-    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/${osrel}/x86_64/7fa2af80.pub
+    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/${osrel}/x86_64/3bf863cc.pub
     apt-get -y update && apt-get -y install --no-install-recommends \
         dkms \
         nvidia-kernel-source-${NVIDIA_DRIVER_VERSION%%.*}=${NVIDIA_DRIVER_VERSION} \
