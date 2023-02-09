@@ -43,7 +43,7 @@ ifdef CONTAINERIZED_BUILD
 	touch $@
 
 ubuntu.sqsh:
-	enroot import -o $@ docker://ubuntu:$(UBUNTU_VERSION)
+	enroot import -o $@ dockerd://ubuntu:$(UBUNTU_VERSION)
 
 mostlyclean:
 	-enroot remove -f $(CONTAINER_NAME)
